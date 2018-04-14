@@ -68,22 +68,20 @@ const moduleGame1 = createElement(`<header class="header">
   </div>
   </footer>`);
 
-const gameContent = moduleGame1.querySelectorAll(`.game__content`);
-let firstOptionsChecked;
-let secondOptionsChecked;
+const gameContent = moduleGame1.querySelector(`.game__content`);
 
 // come up with an advanced algorithm using
 // [...gameContent].map((option) => console.log(`option`, option));
 
-gameContent[0].addEventListener(`click`, (evt) => {
-  let currentElement = evt.currentTarget;
-  const firstOptions = currentElement.querySelectorAll(`input[name="question1"]`);
-  const secondOptions = currentElement.querySelectorAll(`input[name="question2"]`);
+const firstOptions = gameContent.querySelectorAll(`input[name="question1"]`);
+const secondOptions = gameContent.querySelectorAll(`input[name="question2"]`);
 
-  firstOptionsChecked = [...[...firstOptions].map((option) => option.checked)];
-  secondOptionsChecked = [...[...secondOptions].map((option) => option.checked)];
+gameContent.addEventListener(`click`, () => {
 
-  if ((firstOptionsChecked[0] || firstOptionsChecked[1]) && (secondOptionsChecked[0] || secondOptionsChecked[1])) {
+  let firstOptionsChecked = [...firstOptions].some((option) => option.checked);
+  let secondOptionsChecked = [...secondOptions].some((option) => option.checked);
+
+  if (firstOptionsChecked && secondOptionsChecked) {
     showTemplate(moduleGame2);
   }
 });

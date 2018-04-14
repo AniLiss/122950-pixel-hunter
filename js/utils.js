@@ -4,10 +4,9 @@ export const createElement = (htmlString) => {
   return wrapper;
 };
 
-export const containerNode = document.getElementsByClassName(`central`);
+export const containerNode = document.querySelector(`.central`);
 
 export const showTemplate = (template) => {
-  // containerNode.innerHTML = ``;
-  [...containerNode[0].childNodes].map((i) => i.remove());
-  containerNode[0].appendChild(template);
+  containerNode.innerHTML = ``;
+  containerNode.appendChild(template);
 };

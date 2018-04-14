@@ -68,13 +68,11 @@ const gameOptions = moduleGame2.querySelectorAll(`.game__option input`);
 //   }
 // });
 
-[...gameOptions].map((input) => {
-  input.addEventListener(`click`, () => {
-    [...gameOptions].map((option) => {
-      if (option.checked) {
-        showTemplate(moduleGame3);
-      }
-    });
+[...gameOptions].forEach((input) => {
+  input.addEventListener(`click`, (evt) => {
+    if (evt.target.checked) {
+      showTemplate(moduleGame3);
+    }
   });
 });
 
